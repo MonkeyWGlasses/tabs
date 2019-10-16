@@ -336,6 +336,7 @@ class TabBarBottom extends React.Component<BottomTabBarProps, State> {
       safeAreaInset,
       style,
       tabStyle,
+      containerStyle: userContainerStyle,
     } = this.props;
 
     const { routes } = navigation.state;
@@ -359,6 +360,8 @@ class TabBarBottom extends React.Component<BottomTabBarProps, State> {
       marginVertical,
       ...innerStyle
     } = StyleSheet.flatten(style || {});
+    
+    const flattenedUserContainerStyle = StyleSheet.flatte(userContainerStyle || {})
 
     const containerStyle = {
       position,
@@ -406,6 +409,7 @@ class TabBarBottom extends React.Component<BottomTabBarProps, State> {
               }
             : null,
           containerStyle,
+          flattenedUserContainerStyle,
         ]}
         pointerEvents={
           keyboardHidesTabBar && this.state.keyboard ? 'none' : 'auto'
